@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  vps_web:
+    build: .
+    restart: always
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: server_management
+    volumes:
+      - .:/vps_app
+    ports:
+      - "8888:8000"
